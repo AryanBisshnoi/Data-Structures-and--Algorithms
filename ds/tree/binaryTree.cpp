@@ -1,8 +1,10 @@
 #include<iostream>
 #include "binaryTree.h"
 #include<queue>
+#include<limits.h>
 using namespace std;
 
+//create a binary tree.
 btn<int>* createTree()
 {
     int rootdata;
@@ -37,6 +39,7 @@ btn<int>* createTree()
     
 }
 
+//print it.
 void print(btn<int> *root)
 {
     if(root==NULL)
@@ -56,6 +59,7 @@ void print(btn<int> *root)
 
 }
 
+//height of a binary tree.
 int height(btn<int> *root)
 {
     if(root==NULL)
@@ -63,6 +67,8 @@ int height(btn<int> *root)
     return (1+max(height(root->lchild), height(root->rchild)));
 }
 
+
+//count number of nodes
 int countNodes(btn<int> *root)
 {
     if(root==NULL)
@@ -70,6 +76,8 @@ int countNodes(btn<int> *root)
     return 1+countNodes(root->lchild)+countNodes(root->rchild);
 }
 
+
+//diameter of the tree
 int diameter(btn<int> *root)
 {
     if(root==NULL)
@@ -80,14 +88,63 @@ int diameter(btn<int> *root)
     return max(opt1, max(opt2, opt3));
 }
 
-//1 2 3 4 5 6 7 -1 -1 -1 -1 8 -1 -1 -1 -1 -1
+//preorder traversal
+void preorder(btn<int> *root)
+{
+    if(root!=NULL)
+    {
+        cout<< root->data<<" ";
+        preorder(root->lchild);
+        preorder(root->rchild);
+    }
+}
+
+//inorder traversal
+void inorder(btn<int> *root)
+{
+    if(root!=NULL)
+    {
+        inorder(root->lchild);
+        cout<< root->data<<" ";
+        inorder(root->rchild);
+    }
+}
+
+//postorder traversal
+void postorder(btn<int> *root)
+{
+    if(root!=NULL)
+    {
+        postorder(root->lchild);
+        postorder(root->rchild);
+        cout<< root->data<<" ";
+    }
+}
+
+//sum of nodes of a binary tree.
+int sumOfNodes(btn<int> *root)
+{
+    if(root==NULL)
+    return 0;
+    return root->data + sumOfNodes(root->lchild) + sumOfNodes(root->rchild);
+}
+
+//1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
 
 int main()
 {
+    int k, sum;
     btn<int> *root= createTree();
     print(root);
     cout<<"Height of the binary tree is: "<<height(root)<<endl;
     cout<<"Number of nodes in binary tree: "<<countNodes(root)<<endl;
     cout<<"Diameter of the binary tree is: "<<diameter(root)<<endl;
+    cout<<"Preorder traversal: "<<endl;
+    preorder(root);
+    cout<<endl<<"Inorder traversal: "<<endl;
+    inorder(root);
+    cout<<endl<<"Postorder traversal: "<<endl;
+    postorder(root);
+    cout<<endl<<"Sum of Nodes: "<<sumOfNodes(root)<<endl;
     return 0;
 }
