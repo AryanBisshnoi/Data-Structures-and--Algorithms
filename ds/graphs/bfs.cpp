@@ -24,7 +24,6 @@ void printBfs(int **a, int n, bool *visited, int i)
     }
 }
 
-
 void bfs(int **a, int n)
 {
     bool *visited = new bool[n];

@@ -25,7 +25,7 @@ void dfs(int **a, int n)
     {
         if(visited[i]==false)
         {
-            printDfs(a,n,visited,i);
+            printDfs(a,n,visited,1);
         }
     }
     delete[] visited;

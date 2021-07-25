@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+    //greater<int> is used when elements of set need to be arranged in decending order.
     set<int, greater<int>> s;
     int n,i,item;
     cin>>n;
